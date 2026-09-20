@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A calm, focused space for managing your daily tasks.">
+    <title>Daymark | Todo dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="#" aria-label="Daymark home">
+                <span class="brand-mark">D</span>
+                <span>daymark</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a class="nav-link is-active" href="#today">
+                    <span class="nav-icon icon-grid" aria-hidden="true"></span>
+                    <span>Today</span>
+                    <span class="nav-count">8</span>
+                </a>
+                <a class="nav-link" href="#upcoming">
+                    <span class="nav-icon icon-calendar" aria-hidden="true"></span>
+                    <span>Upcoming</span>
+                </a>
+                <a class="nav-link" href="#completed">
+                    <span class="nav-icon icon-check" aria-hidden="true"></span>
+                    <span>Completed</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-section">
+                <p class="section-label">Your spaces</p>
+                <a class="space-link" href="#work"><span class="space-dot dot-coral"></span>Work <span>4</span></a>
+                <a class="space-link" href="#personal"><span class="space-dot dot-blue"></span>Personal <span>3</span></a>
+                <a class="space-link" href="#learning"><span class="space-dot dot-yellow"></span>Learning <span>2</span></a>
+                <button class="new-space" type="button"><span>+</span> New space</button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="profile-chip">
+                    <div class="avatar">AS</div>
+                    <div>
+                        <strong>Ashutosh</strong>
+                        <span>Free workspace</span>
+                    </div>
+                    <button class="more-button" type="button" aria-label="Open account menu">...</button>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content" id="today">
+            <header class="topbar">
+                <div class="breadcrumb"><span>My workspace</span><span>/</span><strong>Today</strong></div>
+                <div class="topbar-actions">
+                    <button class="icon-button" type="button" aria-label="Search tasks"><span class="search-icon"></span></button>
+                    <button class="icon-button notification-button" type="button" aria-label="View notifications"><span class="bell-icon"></span><i></i></button>
+                    <button class="help-button" type="button">Need help?</button>
+                </div>
+            </header>
+
+            <div class="page-heading">
+                <div>
+                    <p class="eyebrow">Wednesday, September 20, 2026</p>
+                    <h1>Good morning, Ashutosh <span>✦</span></h1>
+                    <p class="heading-copy">Make today count. One clear step at a time.</p>
+                </div>
+                <button class="focus-button" type="button"><span class="focus-icon">◒</span> Start focus</button>
+            </div>
+
+            <section class="overview-grid" aria-label="Today's overview">
+                <article class="progress-card">
+                    <div class="card-heading"><span>Daily progress</span><span class="progress-percent" id="progress-percent">0%</span></div>
+                    <div class="progress-track"><span id="progress-bar"></span></div>
+                    <div class="progress-meta"><strong id="progress-label">0 of 0 tasks complete</strong><span id="progress-message">Add a task to begin</span></div>
+                </article>
+                <article class="stat-card coral-card"><span class="stat-icon">!</span><div><strong id="due-count">0</strong><span>Due today</span></div></article>
+                <article class="stat-card blue-card"><span class="stat-icon">↗</span><div><strong id="week-count">0</strong><span>Tasks this week</span></div></article>
+            </section>
+
+            <section class="task-section" aria-labelledby="tasks-heading">
+                <div class="section-heading">
+                    <div><h2 id="tasks-heading">Today's tasks</h2><span class="task-total" id="task-total">0 tasks</span></div>
+                    <div class="view-actions"><button class="view-button is-selected" type="button" aria-label="List view"><span class="list-icon"></span></button><button class="view-button" type="button" aria-label="Board view"><span class="board-icon"></span></button></div>
+                </div>
+
+                <form class="task-composer">
+                    <span class="plus-icon" aria-hidden="true">+</span>
+                    <label class="sr-only" for="new-task">Add a new task</label>
+                    <input id="new-task" type="text" placeholder="What needs to be done?" autocomplete="off">
+                    <button type="submit">Add task</button>
+                </form>
+
+                <div class="filter-row" aria-label="Task filters">
+                    <button class="filter-button is-active" type="button" data-filter="all">All <span>0</span></button>
+                    <button class="filter-button" type="button" data-filter="active">In progress <span>0</span></button>
+                    <button class="filter-button" type="button" data-filter="completed">Completed <span>0</span></button>
+                    <button class="sort-button" type="button"><span class="sort-icon">↕</span> Sort: Priority</button>
+                </div>
+
+                <div class="task-list" id="task-list" aria-live="polite"></div>
+            </section>
+        </main>
+    </div>
+    <script src="todo.js"></script>
+</body>
+</html>
